@@ -1,0 +1,41 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header title={SITE_TITLE} />
+		<main>
+			<h1>Добро пожаловать!</h1>
+			<p>
+			Если Вы здесь, значит у Вас есть очень важные вопросы:
+			</p>
+			<p>Такие как:</p>
+			<ul>
+				<li>Для чего Я живу?</li>
+				<li>Где живет Бог?</li>
+				<li>Почему я страдаю?</li>
+				<li>Куда уходят люди когда умерают?</li>
+				<li>И многие другие вопросы...</code></li>
+			</ul>
+			<p>
+				Шрила Прабхупада дас Вам ответ
+				</a> в нашем  <a href="/blog">блоге</a>.
+			</p>
+			<p>
+				Если, Вы не нашли ответа? Можете задать их в чате <a
+					href="https://github.com/Charca/astro-blog-template"
+					>Telegram
+				</a> или <a href="mailto:prabhupada-blog@gmail.com"> на почту</a>.
+			</p>
+		</main>
+		<Footer />
+	</body>
+</html>
