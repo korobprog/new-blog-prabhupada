@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://new-blog-prabhupada.web.app/sitemap-index.xml
