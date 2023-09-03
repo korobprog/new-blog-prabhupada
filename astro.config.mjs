@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://korobprog.github.io',
+	site: 'https://korobprog.github.io/new-blog-prabhupada',
 	integrations: [mdx(), sitemap()],
 	base: '/new-blog-prabhupada',
 });
