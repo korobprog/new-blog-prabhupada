@@ -2,16 +2,18 @@
 //import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 import type { Post } from '../../types/payload-types';
-import posts from '../../api/api';
+import fetchData from '../../api/api.astro';
+import ky from 'ky';
 
 export async function getStaticPaths() {
+  const posts: Post[] = await ky.get('http://localhost:3000/api/posts').json();
   //const posts = await getCollection('blog');
-
-  return posts.docs.map((post) => ({
-    params: { slug: 'prabhupada' },
+  return posts.map((post) => ({
+    params: { slug: post.slug },
     props: post,
   }));
 }
+
 type Props = Post;
 
 const post = Astro.props;

@@ -50,7 +50,7 @@ export interface Page {
       };
       id?: string;
     }[];
-    media: string | Media;
+    media: Media;
   };
   layout: (
     | {
@@ -104,7 +104,7 @@ export interface Page {
     | {
         invertBackground?: boolean;
         position?: 'default' | 'fullscreen';
-        media: string | Media;
+        media: Media;
         id?: string;
         blockName?: string;
         blockType: 'mediaBlock';
@@ -169,7 +169,7 @@ export interface Page {
   meta?: {
     title?: string;
     description?: string;
-    image?: string | Media;
+    image?: Media;
   };
   updatedAt: string;
   createdAt: string;
@@ -235,7 +235,7 @@ export interface Post {
       };
       id?: string;
     }[];
-    media: string | Media;
+    media: Media;
   };
   layout: (
     | {
@@ -289,7 +289,7 @@ export interface Post {
     | {
         invertBackground?: boolean;
         position?: 'default' | 'fullscreen';
-        media: string | Media;
+        media: Media;
         id?: string;
         blockName?: string;
         blockType: 'mediaBlock';
@@ -403,7 +403,7 @@ export interface Post {
     | {
         invertBackground?: boolean;
         position?: 'default' | 'fullscreen';
-        media: string | Media;
+        media: Media;
         id?: string;
         blockName?: string;
         blockType: 'mediaBlock';
@@ -469,7 +469,7 @@ export interface Post {
   meta?: {
     title?: string;
     description?: string;
-    image?: string | Media;
+    image?: Media;
   };
   updatedAt: string;
   createdAt: string;
@@ -516,7 +516,7 @@ export interface Project {
       };
       id?: string;
     }[];
-    media: string | Media;
+    media: Media;
   };
   layout: (
     | {
@@ -570,7 +570,7 @@ export interface Project {
     | {
         invertBackground?: boolean;
         position?: 'default' | 'fullscreen';
-        media: string | Media;
+        media: Media;
         id?: string;
         blockName?: string;
         blockType: 'mediaBlock';
@@ -636,7 +636,7 @@ export interface Project {
   meta?: {
     title?: string;
     description?: string;
-    image?: string | Media;
+    image?: Media;
   };
   updatedAt: string;
   createdAt: string;

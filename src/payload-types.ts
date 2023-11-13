@@ -469,7 +469,7 @@ export interface Post {
   meta?: {
     title?: string;
     description?: string;
-    image?: string | Media;
+    image?: Media;
   };
   updatedAt: string;
   createdAt: string;
