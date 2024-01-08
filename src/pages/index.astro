@@ -3,42 +3,52 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import ky from 'ky';
+import type { Post } from '../payload-types';
+
+type Props = Post;
+
+// const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, hero, publishedAt } = Astro.props;
 ---
 
-<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-		<div class="hero-image">
-					<img width={360} height={210} src="/Prabhupada_3.jpg" alt="Блог-Шрилы-Прабхупады" />
-				</div>
-			<h1>Добро пожаловать дорогой друг!</h1>
-			<p>
-			Если Вы здесь, значит у Вас есть очень важные вопросы:
-			</p>
-			<p>Такие как:</p>
-			<ul>
-				<li>Для чего Я живу?</li>
-				<li>Где живет Бог?</li>
-				<li>Почему я страдаю?</li>
-				<li>Куда уходят люди когда умерают?</li>
-				<li>И многие другие вопросы...</code></li>
-			</ul>
-			<p>
-				Шрила Прабхупада отвечает на вопросы здравомыслящих людей
-				</a> в нашем  <a href="/blog/">блоге</a>.
-			</p>
-			<p>
-				Если, Вы не нашли ответа? Можете задать их в чате <a
-					href="https://t.me/otvetprabhubady"
-					>Telegram
-				</a> или <a href="mailto:prabhupada-blog@gmail.com"> на почту</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <div class="hero-image">
+        <img
+          width={360}
+          height={210}
+          src="/Prabhupada_3.jpg"
+          alt="Блог-Шрилы-Прабхупады"
+        />
+      </div>
+      <h1>Добро пожаловать дорогой друг!</h1>
+      {title}
+      <p>Если Вы здесь, значит у Вас есть очень важные вопросы:</p>
+      <ul>
+        <li>Для чего Я живу?</li>
+        <li>Где живет Бог?</li>
+        <li>Почему я страдаю?</li>
+        <li>Куда уходят люди когда умирают?</li>
+        <li>И многие другие вопросы...</li>
+      </ul>
+    </main>
+    <p>Шрила Прабхупада отвечает на вопросы здравомыслящих людей</p> в нашем <a
+      href="/blog/">блоге</a
+    >.
+
+    <p>
+      Если, Вы не нашли ответа? Можете задать их в чате <a
+        href="https://t.me/otvetprabhubady"
+        >Telegram
+      </a> или <a href="mailto:prabhupada-blog@gmail.com"> на почту</a>.
+    </p>
+
+    <Footer />
+  </body>
 </html>
