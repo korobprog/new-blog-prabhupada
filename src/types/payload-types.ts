@@ -34,7 +34,9 @@ export interface Page {
   hero: {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText: {
-      [k: string]: unknown;
+      children: {
+            text?: string;
+          }[]
     }[];
     links?: {
       link: {
@@ -56,7 +58,9 @@ export interface Page {
     | {
         invertBackground?: boolean;
         richText: {
-          [k: string]: unknown;
+          children: {
+            text?: string;
+          }[]
         }[];
         links?: {
           link: {
@@ -81,7 +85,9 @@ export interface Page {
         columns?: {
           size?: 'oneThird' | 'half' | 'twoThirds' | 'full';
           richText: {
-            [k: string]: unknown;
+            children: {
+              text?: string;
+            }[]
           }[];
           enableLink?: boolean;
           link?: {
@@ -219,7 +225,9 @@ export interface Post {
   hero: {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText: {
-      [k: string]: unknown;
+      children: {
+            text?: string;
+          }[]
     }[];
     links?: {
       link: {
@@ -241,7 +249,9 @@ export interface Post {
     | {
         invertBackground?: boolean;
         richText: {
-          [k: string]: unknown;
+          children: {
+            text?: string;
+          }[]
         }[];
         links?: {
           link: {
@@ -266,7 +276,9 @@ export interface Post {
         columns?: {
           size?: 'oneThird' | 'half' | 'twoThirds' | 'full';
           richText: {
-            [k: string]: unknown;
+            children: {
+              text?: string;
+            }[]
           }[];
           enableLink?: boolean;
           link?: {
@@ -355,7 +367,9 @@ export interface Post {
     | {
         invertBackground?: boolean;
         richText: {
-          [k: string]: unknown;
+          children: {
+            text?: string;
+          }[]
         }[];
         links?: {
           link: {
@@ -380,7 +394,9 @@ export interface Post {
         columns?: {
           size?: 'oneThird' | 'half' | 'twoThirds' | 'full';
           richText: {
-            [k: string]: unknown;
+            children: {
+              text?: string;s
+            }[]
           }[];
           enableLink?: boolean;
           link?: {
@@ -500,7 +516,9 @@ export interface Project {
   hero: {
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
     richText: {
-      [k: string]: unknown;
+      children: {
+            text?: string;
+          }[]
     }[];
     links?: {
       link: {
@@ -522,7 +540,9 @@ export interface Project {
     | {
         invertBackground?: boolean;
         richText: {
-          [k: string]: unknown;
+          children: {
+            text?: string;
+          }[]
         }[];
         links?: {
           link: {
@@ -547,7 +567,9 @@ export interface Project {
         columns?: {
           size?: 'oneThird' | 'half' | 'twoThirds' | 'full';
           richText: {
-            [k: string]: unknown;
+            children: {
+              text?: string;
+            }[]
           }[];
           enableLink?: boolean;
           link?: {

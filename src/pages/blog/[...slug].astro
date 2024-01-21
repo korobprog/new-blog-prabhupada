@@ -1,47 +1,27 @@
 ---
 //import { type CollectionEntry, getCollection } from 'astro:content';
-import ky from 'ky';
-import BlogPost from '../../layouts/BlogPost.astro';
-import type { Post } from '../../types/payload-types';
-import { Debug } from 'astro:components';
-
-
-
-
-export async function getStaticPaths() {
-  const posts: Post[] = await ky.get('http://localhost:3000/api/posts').json();
-  //const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: {
-      slug: post.slug,
-      image: post.meta?.image?.url,
-      title: post.title,
-      publishedAt: post.publishedAt,
-      hero: post.hero
-    },
-    props: post,
-  }));
-}
-
-
-/* export async function getStaticPaths() {
-  const response  = await fetch('http://localhost:3000/api/posts/' , {
-    method: "GET",
-  });
-  const postsResponse: Post[] = await response.json();
-  //const posts = await getCollection('blog');
-  return postsResponse.map((post) => ({
-    params: { slug: post.slug },
-    props: post,
-  }));
-} */
+import BlogPost from "../../layouts/BlogPost.astro";
+import type { Post } from "../../types/payload-types";
 
 type Props = Post;
 
-const post = Astro.props;
+export async function getStaticPaths() {
+  const response = await fetch("http://localhost:3000/api/posts?", {
+    method: "GET",
+  });
+  const getpost = await response.json();
+  return getpost.docs.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+    props: { post },
+  }));
+}
+
+Astro.params;
+const { post } = Astro.props;
+
 // const { Content } = await post.render();
 ---
 
-<BlogPost {...post}>
-  {post.title}
-</BlogPost>
+<BlogPost {...post} />

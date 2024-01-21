@@ -1,45 +1,23 @@
 ---
-import { Debug } from "astro:components";
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import FormattedDate from '../../components/FormattedDate.astro';
-import type { Post } from '../../types/payload-types';
-import ky from 'ky';
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts.ts";
+import FormattedDate from "../../components/FormattedDate.astro";
+import type { Post } from "../../types/payload-types.ts";
 
 type Props = Post;
 
-export const getServerData = async () => {
-  const posts: Post[] = await ky.get('http://localhost:3000/api/posts').json();
-  return { props: { posts } };
-};
-
-const blogSort = ({ posts }: { posts: Post[] }) => {
-  // Сортировка постов по дате публикации
-  return posts.sort((a, b) =>
-    (a.createdAt || '') < (b.publishedAt || '') ? 1 : -1
-  );
-};
-
-export async function getStaticPaths() {
-  const posts: Post[] = await ky.get('http://localhost:3000/api/posts').json();
-  //const posts = await getCollection('blog');
-  return posts.map((post) => ({
-    params: {
-      slug: post.slug,
-      image: post.meta?.image?.url,
-      title: post.title,
-      publishedAt: post.publishedAt,
-    },
-    props: post,
-  }));
-}
-
-const post = Astro.props;
+// Получаем данные с сайта
+const response = await fetch("http://localhost:3000/api/posts?", {
+  method: "GET",
+});
+// Переделываем данные в список JSON-объектов
+const getpost = await response.json();
+// Отделяем первый пост для первой карточки
+const data: Post = getpost.docs[0];
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -116,33 +94,31 @@ const post = Astro.props;
   <body>
     <Header />
     <main>
-      <section>
-        <ul>
-          {
-            (
-              <li>
-                <a href={`/blog/${post.slug}/`}>
-                  {post.meta?.image?.url && (
-                    <img
-                      width={720}
-                      height={360}
-                      src={post.meta?.image.url}
-                      alt=""
-                    />
-                  )}
-
-                  <h4 class="title">{post.title}</h4>
-                  {post.publishedAt && (
-                    <div class="date">
-                      <FormattedDate date={new Date(post.publishedAt)} />
-                    </div>
-                  )}
-                </a>
-              </li>
-            )
-          }
-        </ul>
-      </section>
+      <ul>
+        <li>
+          <a href={`/blog/${data.slug}/`}>
+            {
+              getpost.docs[0].meta.image.url && (
+                <img
+                  width={720}
+                  height={360}
+                  src={data?.meta?.image?.url}
+                  alt=""
+                />
+              )
+            }
+            {
+              data?.publishedAt && (
+                <div class="date">
+                  <FormattedDate date={new Date(data?.publishedAt)} />
+                </div>
+              )
+            }
+            <h4 class="title">{data.title}</h4>
+            <p>{data.hero.richText[0].children.map((arr) => arr.text)}</p>
+          </a>
+        </li>
+      </ul>
     </main>
     <Footer />
   </body>
