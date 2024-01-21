@@ -1,18 +1,11 @@
+
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import ky from 'ky';
-import type { Post } from '../payload-types';
-import { Debug } from 'astro:components';
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BaseHead from "./BaseHead.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
 
-type Props = Post;
-
-
-// const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 const { title, hero, publishedAt } = Astro.props;
-
 ---
 
 <html lang="en">
